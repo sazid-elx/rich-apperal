@@ -72,7 +72,7 @@ body {
   margin: 0 auto;
 }
 
-button{
+button {
   cursor: pointer;
 }
 a {
@@ -87,4 +87,8 @@ a {
 .title {
   font-size: 32px;
   line-height: 25.6px;
+}
+
+.txt-center {
+  text-align: center;
 }

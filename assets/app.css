@@ -14,6 +14,10 @@
     border: none;
 }
 
+.b-w-btn.small {
+    width: 120px;
+}
+
 .b-w-btn.short {
     height: 40px;
 }
