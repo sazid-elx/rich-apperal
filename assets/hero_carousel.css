@@ -1,0 +1,11 @@
+.hero-banner-carousel {
+    margin: 0 20px;
+    position: relative;
+}
+
+.slide-contents {
+    position: absolute;
+    z-index: 2;
+    top: 30%;
+    left: 10%;
+}

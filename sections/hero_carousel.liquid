@@ -1,0 +1,67 @@
+<script src="/assets/hero_carousel.js" async></script>
+{{ 'hero_carousel.css' | asset_url | stylesheet_tag }}
+<div class="hero-banner-carousel" id="swiper-{{ section.id }}">
+  <div class="slide-contents flex flex-col gap-32">
+    <h1 class="slide-title">{{ section.settings.section_title }}</h1>
+    <button class="b-w-btn">Shop Now</button>
+  </div>
+
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'slider' %}
+            <div class="swiper-slide">
+              <img
+                src="{{ block.settings.hero_banner_image | image_url }}"
+                height="600px"
+                width="100%"
+                alt="{{ block.settings.hero_banner_image }}"
+              >
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Banner Carousel",
+  "settings": [
+    {
+      "label": "Section Title",
+      "id": "section_title",
+      "type": "richtext",
+      "default": "<p>Hero Banner Carousel</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Hero Banner",
+      "type": "slider",
+      "settings": [
+        {
+          "label": "Banner Image",
+          "id": "hero_banner_image",
+          "type": "image_picker"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "hero_banner_collection"
+    }
+  ]
+}
+{% endschema %}

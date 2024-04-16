@@ -1,0 +1,36 @@
+{{ 'header.css' | asset_url | stylesheet_tag }}
+<div class="header flex items-center justify-between">
+  <a class="title" href="/"><span class="b">Rich</span>Apperal</a>
+
+  <div class="menu-items flex gap-24 items-center">
+    {% for link in linklists['main-menu'].links -%}
+      {{ link.title | link_to: link.url }}
+    {%- endfor %}
+  </div>
+
+  <div class="menu-items flex gap-16 items-center">
+    {{ localization.country | image_url: width: 32 | image_tag }}
+    <a href="/search">
+      <img src="{{ 'search.svg' | asset_url }}" height="24" width="24" alt="Search">
+    </a>
+    <a href="/wishlist">
+      <img src="{{ 'heart.svg' | asset_url }}" height="24" width="24" alt="Wishlist">
+    </a>
+    <a href="/notifications">
+      <img src="{{ 'email.svg' | asset_url }}" height="24" width="24" alt="Newsletter">
+    </a>
+    <a href="/account">
+      <img src="{{ 'user.svg' | asset_url }}" height="24" width="24" alt="Account">
+    </a>
+    <a href="/cart" class="flex items-center gap-8">
+      <img src="{{ 'cart.svg' | asset_url }}" height="24" width="24" alt="Cart">
+      <span class="cart-count">0</span>
+    </a>
+  </div>
+
+  <div class="mobile-menu">
+    <svg xmlns="http://www.w3.org/2000/svg" style="height: 24px; width: 24px" viewBox="0 0 448 512">
+      <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+    </svg>
+  </div>
+</div>
