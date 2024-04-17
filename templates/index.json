@@ -1,10 +1,38 @@
 {
-    "sections": {
-        "hero_collection": {
-            "type": "hero_carousel"
+  "sections": {
+    "hero_collection": {
+      "type": "hero_carousel",
+      "blocks": {
+        "slider_BpjidH": {
+          "type": "slider",
+          "settings": {
+            "hero_banner_image": "shopify:\/\/shop_images\/9f190cba7218c819c81566bca6298c6a.jpg"
+          }
+        },
+        "slider_mQnPPf": {
+          "type": "slider",
+          "settings": {
+            "hero_banner_image": "shopify:\/\/shop_images\/green-t-shirt.jpg"
+          }
+        },
+        "slider_ez98gg": {
+          "type": "slider",
+          "settings": {
+            "hero_banner_image": "shopify:\/\/shop_images\/e60d1540185ee255777337253ca2c12c.jpg"
+          }
         }
-    },
-    "order": [
-        "hero_collection"
-    ]
+      },
+      "block_order": [
+        "slider_BpjidH",
+        "slider_mQnPPf",
+        "slider_ez98gg"
+      ],
+      "settings": {
+        "section_title": "<p>Hero Banner Carousel<\/p>"
+      }
+    }
+  },
+  "order": [
+    "hero_collection"
+  ]
 }
