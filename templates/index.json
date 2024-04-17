@@ -30,9 +30,16 @@
       "settings": {
         "section_title": "<p>Hero Banner Carousel<\/p>"
       }
+    },
+    "prod_collection_carousel_HD9UXE": {
+      "type": "prod_collection_carousel",
+      "settings": {
+        "collection": "men"
+      }
     }
   },
   "order": [
-    "hero_collection"
+    "hero_collection",
+    "prod_collection_carousel_HD9UXE"
   ]
 }
