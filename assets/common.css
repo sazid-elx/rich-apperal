@@ -6,6 +6,10 @@
 body {
   background-color: #f5f5f5;
   margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .p-4 {
@@ -14,6 +18,22 @@ body {
 
 .p-8 {
   padding: 8px;
+}
+
+.pt-8 {
+  padding-top: 8px;
+}
+
+.pt-16{
+  padding-top: 16px;
+}
+
+.pb-8{
+  padding-bottom: 8px;
+}
+
+.pb-16{
+  padding-bottom: 16px;
 }
 
 .mb-8{
@@ -68,6 +88,10 @@ body {
   justify-content: space-between;
 }
 
+.justify-around {
+  justify-content: space-around;
+}
+
 .justify-start {
   justify-content: start;
 }
@@ -76,8 +100,19 @@ body {
   align-items: center;
 }
 
+.mt-8{
+  margin-top: 8px;
+}
+.mt-16{
+  margin-top: 16px;
+}
+
 .mx-auto {
   margin: 0 auto;
+}
+
+.mx-20{
+  margin: 0 20px;
 }
 
 button {

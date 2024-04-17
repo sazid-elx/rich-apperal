@@ -1,0 +1,25 @@
+<div class="gap" style="height: {{ section.settings.gap }}px;"></div>
+
+
+
+{% schema %}
+{
+  "name": "Gap",
+  "settings": [
+    {
+      "type": "range",
+      "label": "Vertical Gap",
+      "id": "gap",
+      "unit": "px",
+      "default": 12,
+      "min": 0,
+      "max": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gap"
+    }
+  ]
+}
+{% endschema %}
