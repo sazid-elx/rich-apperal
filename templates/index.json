@@ -24,15 +24,29 @@
         "section_title": "<p>Hero Banner Carousel<\/p>"
       }
     },
+    "gap_PnBNKP": {
+      "type": "gap",
+      "settings": {
+        "gap": 40
+      }
+    },
     "prod_collection_carousel_HD9UXE": {
       "type": "prod_collection_carousel",
       "settings": {
         "collection": "men"
       }
+    },
+    "gap_phrYfW": {
+      "type": "gap",
+      "settings": {
+        "gap": 40
+      }
     }
   },
   "order": [
     "hero_collection",
-    "prod_collection_carousel_HD9UXE"
+    "gap_PnBNKP",
+    "prod_collection_carousel_HD9UXE",
+    "gap_phrYfW"
   ]
 }
