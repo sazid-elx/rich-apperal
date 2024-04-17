@@ -14,18 +14,11 @@
           "settings": {
             "hero_banner_image": "shopify:\/\/shop_images\/green-t-shirt.jpg"
           }
-        },
-        "slider_ez98gg": {
-          "type": "slider",
-          "settings": {
-            "hero_banner_image": "shopify:\/\/shop_images\/e60d1540185ee255777337253ca2c12c.jpg"
-          }
         }
       },
       "block_order": [
         "slider_BpjidH",
-        "slider_mQnPPf",
-        "slider_ez98gg"
+        "slider_mQnPPf"
       ],
       "settings": {
         "section_title": "<p>Hero Banner Carousel<\/p>"
