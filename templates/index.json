@@ -1,14 +1,10 @@
 {
     "sections": {
-        "index": {
-            "type": "index"
-        },
         "hero_collection": {
             "type": "hero_carousel"
         }
     },
     "order": [
-        "hero_collection",
-        "index"
+        "hero_collection"
     ]
 }

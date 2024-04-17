@@ -16,6 +16,14 @@ body {
   padding: 8px;
 }
 
+.mb-8{
+  margin-bottom: 8px;
+}
+
+.mb-16{
+  margin-bottom: 16px;
+}
+
 .gap-4 {
   gap: 4px;
 }

@@ -1,0 +1,11 @@
+{
+    "sections": {
+        "collection_carousel": {
+            "type": "prod_collection_carousel",
+            "settings": {}
+        }
+    },
+    "order": [
+        "collection_carousel"
+    ]
+}
