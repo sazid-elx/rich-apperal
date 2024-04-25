@@ -1,0 +1,13 @@
+{{ 'product_card_detailed.css' | asset_url | stylesheet_tag }}
+<div class="product-card-details mb-16">
+  <a href="{{ product.url }}">
+   
+    <img src="{{ product.featured_image | image_url }}" height="auto" width="100%" alt="{{ product.title }}">
+    <div class="flex justify-between">
+      <p class="muted-txt">{{ product.title | truncate: 100 }}</p>
+      <p class="muted-txt">{{ product.price }}</p>
+    </div>
+    
+  </a>
+</div>
+

@@ -1,5 +1,30 @@
-<div class="pdp" id="pdp-{{ section.id }}">
-    <p>Product Page</p>
+{{ 'pdp.css' | asset_url | stylesheet_tag }}
+<div class="pdp mx-20 mb-16" id="pdp-{{ section.id }}">
+  <div class="flex gap-32">
+    <div class="pdp-gallery flex gap-16 flex-wrap">
+        {% for img in product.images %}
+          <img src="{{ img | image_url }}" height="auto" width="48%" />
+        {% endfor %}
+    </div>
+    <div class="pdp-info mt-16 pt-16">
+      <div class="flex gap-8 muted-txt mb-16">
+        <a href="{{ shop.url }}">Home</a> / <a href="{{ product.collections.first.url }}"> {{ product.collections.first.title }}</a>
+      </div>
+      <h2>{{ product.title }}</h2>
+      <h2>{{ localization.country.currency.symbol }}{{ product.price }} </h2>
+
+      <p class="secondary-txt mt-16 mb-16" id="desc-{{ section.id }}">
+        {{ product.description }}
+      </p>
+      
+      <select id="variant-select" class="px-8">
+        {% for variant in product.variants %}
+          <option value="{{ variant.id }}">{{ variant.title }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+    
 </div>
 
 {% schema %}

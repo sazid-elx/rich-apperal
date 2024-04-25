@@ -2,9 +2,15 @@
 <div class="header flex items-center justify-between">
   <a class="title" href="/"><span class="b">Rich</span>Apperal</a>
 
-  <div class="menu-items flex gap-24 items-center">
+  <!-- <div class="menu-items flex gap-24 items-center">
     {% for link in linklists['main-menu'].links -%}
       {{ link.title | link_to: link.url }}
+    {%- endfor %}
+  </div> -->
+
+    <div class="menu-items flex gap-24 items-center">
+    {% for block in section.blocks -%}
+      <a href='{{ block.settings.collection-name.url }}'>{{ block.settings.collection-name.title }}</a>
     {%- endfor %}
   </div>
 
@@ -34,3 +40,27 @@
     </svg>
   </div>
 </div>
+
+{% schema %}
+{
+  "name": "Header",
+   "blocks": [
+    {
+      "name": "Header Collection",
+      "type": "collection",
+      "settings": [
+        {
+          "label": "Featured Collection",
+          "id": "collection-name",
+          "type": "collection"
+        }
+      ]
+    }
+  ],
+        "presets": [
+            {
+                "name": "Header Menu"
+            }
+        ]
+}
+{% endschema %}

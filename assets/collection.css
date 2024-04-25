@@ -1,0 +1,12 @@
+.plp-holder {
+  position: relative;
+}
+
+.sidebar {
+  width: 200px;
+  position: absolute;
+}
+
+.plp-contents {
+  margin-left: 200px;
+}
