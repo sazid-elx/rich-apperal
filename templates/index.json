@@ -6,7 +6,7 @@
         "slider_BpjidH": {
           "type": "slider",
           "settings": {
-            "hero_banner_image": "shopify:\/\/shop_images\/9f190cba7218c819c81566bca6298c6a.jpg"
+            "hero_banner_image": "shopify:\/\/shop_images\/986a2b052ada03689c1c0a576fd00d94.jpg"
           }
         },
         "slider_mQnPPf": {
@@ -24,15 +24,29 @@
         "section_title": "<p>Hero Banner Carousel<\/p>"
       }
     },
+    "gap_PnBNKP": {
+      "type": "gap",
+      "settings": {
+        "gap": 40
+      }
+    },
     "prod_collection_carousel_HD9UXE": {
       "type": "prod_collection_carousel",
       "settings": {
         "collection": "men"
       }
+    },
+    "gap_phrYfW": {
+      "type": "gap",
+      "settings": {
+        "gap": 40
+      }
     }
   },
   "order": [
     "hero_collection",
-    "prod_collection_carousel_HD9UXE"
+    "gap_PnBNKP",
+    "prod_collection_carousel_HD9UXE",
+    "gap_phrYfW"
   ]
 }
