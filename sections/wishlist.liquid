@@ -1,0 +1,12 @@
+<div class="wishlist">
+    <h1>Wishlist</h1>
+    <div class="flex gap-8">
+        {% for product in wishlist.products %}
+            <div class="product-card p-8">
+                <a href="{{ product.url }}">
+                    <img src="{{ product.featured_image | image_url }}" height="300px" width="280px">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

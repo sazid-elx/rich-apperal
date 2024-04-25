@@ -1,1 +1,36 @@
-<h1>Collection Page</h1>
+<div class="plp mx-20">
+    <h2>{{ collection.title }}'s Collection</h2>
+    
+    <div class="flex flex-wrap justify-center gap-8 mt-16">
+        {% for product in collection.products %}
+            <div class="col-product-card p-8">
+                <!-- Heart icon -->
+                <img class='favourite' src='{{ 'heart.svg' | asset_url }}' height="24" width="24" onclick="addToWishlist('{{ product.id }}')">
+                
+                <a href="{{ product.url }}">
+                    <img src="{{ product.featured_image | image_url }}" height="300px" width="280px">
+                    <div class="flex justify-between px-4">
+                        <h4>{{ product.title }}</h4>
+                        <p>{{ product.price | money }}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    function addToWishlist(productId) {
+        // AJAX request to add product to wishlist
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/account/wishlist/add", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Handle success response, maybe show a message to the user
+                alert("Product added to wishlist!");
+            }
+        };
+        xhr.send(JSON.stringify({ productId: productId }));
+    }
+</script>

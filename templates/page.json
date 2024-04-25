@@ -1,10 +1,10 @@
 {
     "sections": {
-        "new": {
-            "type": "new"
+        "page": {
+            "type": "page"
         }
     },
     "order": [
-        "new"
+        "page"
     ]
 }
