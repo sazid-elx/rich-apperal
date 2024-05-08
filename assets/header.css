@@ -1,26 +1,33 @@
 .header {
-    height: 100px;
-    padding: 0 20px;
+  height: 100px;
+  padding: 0 20px;
 }
 
 .menu-items a {
-    font-family: Montserrat;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 20.7px;
-    letter-spacing: 0.7200000286102295px;
-    text-align: left;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20.7px;
+  letter-spacing: 0.7200000286102295px;
+  text-align: left;
 }
 
 .mobile-menu {
-    display: none;
+  display: none;
 }
 
 @media screen and (max-width: 1023px) {
-    .menu-items {
-        display: none;
-    }
-    .mobile-menu {
-        display: block;
-    }
+  .menu-items {
+    display: none;
+  }
+  .mobile-menu {
+    display: block;
+  }
 }
+
+#featured-collection-nav:hover {
+  text-decoration: underline;
+}
+/* wishlist-link-floating {
+  position: relative !important;
+} */

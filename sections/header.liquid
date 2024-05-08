@@ -2,15 +2,10 @@
 <div class="header flex items-center justify-between">
   <a class="title" href="/"><span class="b">Rich</span>Apperal</a>
 
-  <!-- <div class="menu-items flex gap-24 items-center">
-    {% for link in linklists['main-menu'].links -%}
-      {{ link.title | link_to: link.url }}
-    {%- endfor %}
-  </div> -->
 
-    <div class="menu-items flex gap-24 items-center">
+  <div class="menu-items flex gap-24 items-center" >
     {% for block in section.blocks -%}
-      <a href='{{ block.settings.collection-name.url }}'>{{ block.settings.collection-name.title }}</a>
+      <a id='featured-collection-nav' href="{{ block.settings.collection-name.url }}">{{ block.settings['collection-name'].title }}</a>
     {%- endfor %}
   </div>
 
@@ -41,6 +36,23 @@
   </div>
 </div>
 
+<script>
+    // $(document).ready(() => $('[href="/wishlist"]').html($('wishlist-link-floating wk-button')));
+    function waitForElem(waitFor, callback, minElements = 1, isVariable = false, timer = 10000, frequency = 25) {
+        let elements = isVariable ? window[waitFor] : document.querySelectorAll(waitFor);
+        if (timer <= 0) return;
+        (!isVariable && elements.length >= minElements) || (isVariable && typeof window[waitFor] !== "undefined") ? callback(elements) : setTimeout(() => waitForElem(waitFor, callback, minElements, isVariable, timer - frequency), frequency);
+      }
+
+
+
+      waitForElem('wishlist-link-floating wk-button', ([element]) => {
+        $('[href="/wishlist"]').html($('wishlist-link-floating wk-button'))
+      });
+  
+   // $(document).ready(() => console.log(document.querySelector('wishlist-link-floating')));
+</script>
+
 {% schema %}
 {
   "name": "Header",
@@ -57,10 +69,10 @@
       ]
     }
   ],
-        "presets": [
-            {
-                "name": "Header Menu"
-            }
-        ]
+  "presets": [
+   {
+    "name": "Header Menu"
+    }
+  ]
 }
 {% endschema %}

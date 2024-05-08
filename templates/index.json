@@ -1,1 +1,66 @@
-{"sections":{"hero_collection":{"type":"hero_carousel","blocks":{"slider_BpjidH":{"type":"slider","settings":{"hero_banner_image":"shopify:\/\/shop_images\/986a2b052ada03689c1c0a576fd00d94.jpg"}},"slider_mQnPPf":{"type":"slider","settings":{"hero_banner_image":"shopify:\/\/shop_images\/green-t-shirt.jpg"}}},"block_order":["slider_BpjidH","slider_mQnPPf"],"settings":{"section_title":"<p>Hero Banner Carousel<\/p>"}},"gap_PnBNKP":{"type":"gap","settings":{"gap":40}},"prod_collection_carousel_HD9UXE":{"type":"prod_collection_carousel","settings":{"collection":"men"}},"gap_phrYfW":{"type":"gap","settings":{"gap":40}}},"order":["hero_collection","gap_PnBNKP","prod_collection_carousel_HD9UXE","gap_phrYfW"]}
+{
+  "sections": {
+    "hero_collection": {
+      "type": "hero_carousel",
+      "blocks": {
+        "slider_BpjidH": {
+          "type": "slider",
+          "settings": {
+            "hero_banner_image": "shopify:\/\/shop_images\/986a2b052ada03689c1c0a576fd00d94.jpg"
+          }
+        },
+        "slider_mQnPPf": {
+          "type": "slider",
+          "settings": {
+            "hero_banner_image": "shopify:\/\/shop_images\/green-t-shirt.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "slider_BpjidH",
+        "slider_mQnPPf"
+      ],
+      "settings": {
+        "section_title": "<p>Hero Banner Carousel<\/p>"
+      }
+    },
+    "gap_PnBNKP": {
+      "type": "gap",
+      "settings": {
+        "gap": 40
+      }
+    },
+    "prod_collection_carousel_HD9UXE": {
+      "type": "prod_collection_carousel",
+      "settings": {
+        "collection": "men"
+      }
+    },
+    "gap_phrYfW": {
+      "type": "gap",
+      "settings": {
+        "gap": 40
+      }
+    },
+    "prod_collection_carousel_YL9RQE": {
+      "type": "prod_collection_carousel",
+      "settings": {
+        "collection": "vans"
+      }
+    },
+    "gap_XVqGhr": {
+      "type": "gap",
+      "settings": {
+        "gap": 40
+      }
+    }
+  },
+  "order": [
+    "hero_collection",
+    "gap_PnBNKP",
+    "prod_collection_carousel_HD9UXE",
+    "gap_phrYfW",
+    "prod_collection_carousel_YL9RQE",
+    "gap_XVqGhr"
+  ]
+}

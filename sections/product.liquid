@@ -2,30 +2,101 @@
 <div class="pdp mx-20 mb-16" id="pdp-{{ section.id }}">
   <div class="flex gap-32">
     <div class="pdp-gallery flex gap-16 flex-wrap">
-        {% for img in product.images %}
-          <img src="{{ img | image_url }}" height="auto" width="48%" />
-        {% endfor %}
+      {% for img in product.images %}
+        <img src="{{ img | image_url }}" height="auto" width="48%">
+      {% endfor %}
     </div>
     <div class="pdp-info mt-16 pt-16">
       <div class="flex gap-8 muted-txt mb-16">
-        <a href="{{ shop.url }}">Home</a> / <a href="{{ product.collections.first.url }}"> {{ product.collections.first.title }}</a>
+        <a href="{{ shop.url }}">Home</a> /
+        <a href="{{ product.collections.first.url }}"> {{ product.collections.first.title }}</a>
       </div>
       <h2>{{ product.title }}</h2>
-      <h2>{{ localization.country.currency.symbol }}{{ product.price }} </h2>
+      <h2>
+        {{ localization.country.currency.symbol -}}
+        {{- product.price }}
+      </h2>
 
       <p class="secondary-txt mt-16 mb-16" id="desc-{{ section.id }}">
         {{ product.description }}
       </p>
-      
-      <select id="variant-select" class="px-8">
-        {% for variant in product.variants %}
-          <option value="{{ variant.id }}">{{ variant.title }}</option>
-        {% endfor %}
-      </select>
+
+      {% form 'product', product %}
+        <input
+          id="product-id"
+          type="hidden"
+          name="id"
+          value="{{ product.selected_or_first_available_selling_plan_allocation }}"
+        >
+        <select class="product-option" id="variant-select" class="px-8">
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}">{{ variant.title }}</option>
+          {% endfor %}
+        </select>
+
+        <button class="b-w-btn mt-16 wide" type="submit">Add To Bag</button>
+      {% endform %}
+
+      <div id="add-to-fav" class=" flex items-center justify-center gap-8">
+        <p class="muted-txt mt-16 txt-center"></p>
+        <img src="{{ 'heart.svg' | asset_url }}" class="mt-12" height="24" width="24" alt="Wishlist">
+      </div>
+
+      <ul class="mt-16">
+        <li class="info-list flex justify-between">
+          <span>Details</span>
+          <img src="{{ "arrow-down.svg" | asset_url }}" alt="arrow down" height="16" width="16">
+        </li>
+        <li class="info-list flex justify-between">
+          <span>Send As Gift</span>
+          <img src="{{ "arrow-down.svg" | asset_url }}" alt="arrow down" height="16" width="16">
+        </li>
+        <li class="info-list flex justify-between">
+          <span>Measurments</span>
+          <img src="{{ "arrow-down.svg" | asset_url }}" alt="arrow down" height="16" width="16">
+        </li>
+      </ul>
     </div>
   </div>
-    
 </div>
+
+<script>
+    let product = {{ product | json }};
+
+    let select = document.querySelector('select');
+
+    select.addEventListener('change', () => {
+      let selectedVariantId = select.value;
+
+      var productInput = document.querySelector('#product-id');
+
+      if (productInput) {
+        productInput.value = selectedVariantId;
+      }
+    });
+
+
+    $(document).ready(()=>  
+      {
+        $('#add-to-fav').html( $('#shopify-block-wishlist_king_wishlist_button_block_CjQtb4'));
+        // $('wishlist-button-block').addClass('none');
+
+        // console.log($('[aria-label="Add to Wishlist"]') );
+        // let wishFlag = $('[aria-label="Add to Wishlist"]') ? true : false;
+        // const changeAddToFav = () => {
+        //   if(wishFlag){
+        //     $('#add-to-fav>p').text('ADD TO WISHLIST');
+        //   }
+        //   else{
+        //     $('#add-to-fav>p').text('ADDED TO WISHLIST');
+        //   }
+      
+        //   wishFlag = !wishFlag;
+        //   $('wishlist-button-block').click();
+        // }
+        
+      });
+</script>
 
 {% schema %}
 {
@@ -38,3 +109,4 @@
   ]
 }
 {% endschema %}
+
