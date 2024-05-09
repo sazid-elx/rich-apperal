@@ -9,7 +9,7 @@
     </div>
 
     <div class="plp-holder">
-      <div class="sidebar flex flex-col items-center gap-16">
+      <div class="sidebar flex flex-col items-start gap-16">
         <select id="sort-by">
           {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
 
@@ -264,9 +264,6 @@
             {% endif %}
 
             {% for part in paginate.parts %}
-              <script>
-                console.log(`{{ part | json }}`);
-              </script>
               {% if part.is_link %}
                 <a href="{{ part.url }}" class="{% if part.is_current %}active{% endif %}">{{ part.title }}</a>
               {% else %}

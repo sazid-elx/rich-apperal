@@ -45,3 +45,10 @@ select {
   height: 50px;
   width: 100%;
 }
+
+.general-input{
+  border: 2px solid black;
+  height: 40px;
+  padding: 4px;
+  box-sizing: border-box;
+}
