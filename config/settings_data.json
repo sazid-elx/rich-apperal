@@ -147,17 +147,17 @@
           "counter_border_width": 0
         }
       },
-      "436f3ff2-0347-455c-b79d-fef59b9e6a9e": {
-        "type": "shopify:\/\/apps\/boost-ai-search-discovery\/blocks\/boost-sd-ssr\/7fc998ae-a150-4367-bab8-505d8a4503f7",
-        "disabled": false,
-        "settings": {
-          "templateId": "LY_2LQWb1I"
-        }
-      },
       "16422382648059844097": {
         "type": "shopify:\/\/apps\/boost-ai-search-discovery\/blocks\/instant-search-app-embedded\/7fc998ae-a150-4367-bab8-505d8a4503f7",
-        "disabled": false,
+        "disabled": true,
         "settings": {
+        }
+      },
+      "436f3ff2-0347-455c-b79d-fef59b9e6a9e": {
+        "type": "shopify:\/\/apps\/boost-ai-search-discovery\/blocks\/boost-sd-ssr\/7fc998ae-a150-4367-bab8-505d8a4503f7",
+        "disabled": true,
+        "settings": {
+          "templateId": "LY_2LQWb1I"
         }
       }
     }

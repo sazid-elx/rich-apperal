@@ -7,6 +7,13 @@
   position: absolute;
 }
 
+.sidebar .filter-label{
+  font-size: 18px;
+  font-weight: 400;
+  padding-bottom: 20px;
+  cursor: pointer;
+}
+
 .plp-contents {
   margin-left: 200px;
 }
