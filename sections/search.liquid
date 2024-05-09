@@ -1,0 +1,31 @@
+<div class="search-page mx-20">
+  <form action="{{ routes.search_url }}">
+    <input
+      type="text"
+      placeholder="Search"
+      name="q"
+      value="{{ search.terms | escape }}"
+    >
+    <input type="submit" value="Search">
+  </form>
+
+  {% if search.results %}
+    {% for result in search.results %}
+      <div id="search-result">
+        <img src="{{ result.featured_image | image_url }}" height="315px" width="315px" alt="{{ result.title }}">
+        <h3>{{ result.title }}</h3>
+        <script>
+          console.log('{{ result | json }}');
+        </script>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  {%- paginate search.results by 10 -%}
+    {%- for item in search.results -%}
+     
+    {%- endfor -%}
+    
+    {{- paginate | default_pagination -}}
+  {%- endpaginate -%}
+</div>
