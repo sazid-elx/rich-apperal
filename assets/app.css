@@ -29,8 +29,27 @@
 .b-w-btn:hover {
   background: #fff;
   color: #000;
-  border: 1px solid #000;
+  border: 2px solid #000;
 }
+
+.w-b-btn {
+  height: 50px;
+  padding: 0 8px;
+  color: #000;
+  background: #fff;
+  transition: 0.3s;
+  border: 2px solid #000;
+}
+
+.w-b-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+.w-b-btn.short {
+  height: 40px;
+}
+
 
 .muted-txt {
   color: #777777;
@@ -51,4 +70,12 @@ select {
   height: 40px;
   padding: 4px;
   box-sizing: border-box;
+}
+
+.bg-gray{
+  background-color: #efefef;
+}
+
+.bg-white{
+  background-color: #fff;
 }

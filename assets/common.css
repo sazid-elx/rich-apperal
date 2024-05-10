@@ -139,6 +139,10 @@ button {
   width: 50%;
 }
 
+.border-box{
+  box-sizing: border-box;
+}
+
 a {
   all: unset;
   cursor: pointer;

@@ -5,6 +5,8 @@
 .sidebar {
   width: 200px;
   position: absolute;
+  background: white;
+  min-height: 100%;
 }
 
 .sidebar .filter-label{

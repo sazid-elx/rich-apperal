@@ -1,4 +1,5 @@
 {{ 'header.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
 <div class="header flex items-center justify-between">
   <a class="title" href="/"><span class="b">Rich</span>Apperal</a>
 
@@ -17,16 +18,16 @@
     <a href="/wishlist">
       <img src="{{ 'heart.svg' | asset_url }}" height="24" width="24" alt="Wishlist">
     </a>
-    <a href="/notifications">
+    <a href="/pages/contact">
       <img src="{{ 'email.svg' | asset_url }}" height="24" width="24" alt="Newsletter">
     </a>
     <a href="/account">
       <img src="{{ 'user.svg' | asset_url }}" height="24" width="24" alt="Account">
     </a>
-    <a href="/cart" class="flex items-center gap-8">
+    <div id="open-cart" class="flex items-center gap-8">
       <img src="{{ 'cart.svg' | asset_url }}" height="24" width="24" alt="Cart">
-      <span class="cart-count">0</span>
-    </a>
+      <span class="cart-count">{{ cart.item_count }}</span>
+    </div>
   </div>
 
   <div class="mobile-menu">

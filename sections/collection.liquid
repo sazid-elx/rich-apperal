@@ -9,7 +9,7 @@
     </div>
 
     <div class="plp-holder">
-      <div class="sidebar flex flex-col items-start gap-16">
+      <div class="sidebar flex flex-col items-start gap-16 p-8 mb-16 border-box" >
         <select id="sort-by">
           {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
 
@@ -50,9 +50,7 @@
 
         <form>
           {%- for filter in collection.filters -%}
-            <script>
-              console.log('{{ filter | json }}');
-            </script>
+
             <details>
               <summary class="flex gap-16px">
                 <div class="filter-label">
@@ -114,7 +112,7 @@
                       <input type="submit" value="Apply">
                     </div>
                   {%- when 'list' -%}
-                    <ul>
+                    <ul class="flex flex-col gap-8 mx-20">
                       {%- for filter_value in filter.values -%}
                         <li>
                           <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}">
@@ -224,13 +222,13 @@
             </details>
           {%- endfor -%}
 
-          <div>
+          <div class="filter-group-display__clear">
             <p><a href="{{ collection.url }}?sort_by={{ collection.sort_by }}">Clear all</a></p>
 
             {%- for filter in collection.filters -%}
               {%- if filter.type == 'price_range' -%}
                 {%- if filter.min_value.value != null or filter.max_value.value != null -%}
-                  <p>
+                  <p class="close-filter">
                     <a href="{{ filter.url_to_remove }}">
                       {%- assign min_value = filter.min_value.value | default: 0 -%}
                       {%- assign max_value = filter.max_value.value | default: filter.range_max -%}
@@ -241,7 +239,7 @@
               {%- else -%}
                 {%- for filter_value in filter.active_values -%}
                   <p>
-                    <a href="{{ filter_value.url_to_remove }}"> {{ filter.label }}: {{ filter_value.label }} X </a>
+                    <a href="{{ filter_value.url_to_remove }}" class="flex gap-16"><span class="bg-gray p-8"> {{ filter_value.label }} X </span></a>
                   </p>
                 {%- endfor -%}
               {%- endif -%}
@@ -250,7 +248,7 @@
         </form>
       </div>
 
-      <div class="plp-contents px-8 flex flex-wrap justify-center gap-16">
+      <div class="plp-contents px-8 flex flex-wrap justify-center gap-16 pt-8">
         {% for product in collection.products %}
           {% render 'product_card_detailed', product: product %}
         {% endfor %}
