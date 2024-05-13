@@ -34,7 +34,7 @@
           {% endfor %}
         </select>
 
-        <button class="b-w-btn mt-16 wide" type="submit">Add To Bag</button>
+        <button class="b-w-btn mt-16 wide" id="add-to-bag" type="submit">Add To Bag</button>
       {% endform %}
 
       <div id="add-to-fav" class=" flex items-center justify-center gap-8">
@@ -61,41 +61,59 @@
 </div>
 
 <script>
-    let product = {{ product | json }};
+  let product = {{ product | json }};
 
-    let select = document.querySelector('select');
+  let select = document.querySelector('select');
+  let selectedVariantId = {{ product.selected_or_first_available_variant.id | json}};
+  select.addEventListener('change', () => {
+    selectedVariantId = select.value;
 
-    select.addEventListener('change', () => {
-      let selectedVariantId = select.value;
+    var productInput = document.querySelector('#product-id');
 
-      var productInput = document.querySelector('#product-id');
+    if (productInput) {
+      productInput.value = selectedVariantId;
+    }
+  });
 
-      if (productInput) {
-        productInput.value = selectedVariantId;
-      }
+
+  $(document).ready(() => {
+
+    $('#add-to-fav').html($('#shopify-block-wishlist_king_wishlist_button_block_CjQtb4'));
+
+    function addToCart(f_data) {    
+      fetch('/cart/add.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(f_data),
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        $('#open-cart').click();
+      })
+      .catch(error => {
+        console.error('There was a problem with your fetch operation:', error);
+      });
+    }
+
+
+    $('#add-to-bag').click((e) => {
+      e.preventDefault();
+      let formData = {
+        'items': [{
+          'id': selectedVariantId,
+          'quantity': 1
+        }]
+      };
+      addToCart(formData);
     });
 
 
-    $(document).ready(()=>  
-      {
-        $('#add-to-fav').html( $('#shopify-block-wishlist_king_wishlist_button_block_CjQtb4'));
-        // $('wishlist-button-block').addClass('none');
+  });
 
-        // console.log($('[aria-label="Add to Wishlist"]') );
-        // let wishFlag = $('[aria-label="Add to Wishlist"]') ? true : false;
-        // const changeAddToFav = () => {
-        //   if(wishFlag){
-        //     $('#add-to-fav>p').text('ADD TO WISHLIST');
-        //   }
-        //   else{
-        //     $('#add-to-fav>p').text('ADDED TO WISHLIST');
-        //   }
-      
-        //   wishFlag = !wishFlag;
-        //   $('wishlist-button-block').click();
-        // }
-        
-      });
 </script>
 
 {% schema %}
@@ -109,4 +127,3 @@
   ]
 }
 {% endschema %}
-

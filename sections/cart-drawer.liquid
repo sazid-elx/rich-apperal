@@ -1,34 +1,12 @@
 {{ 'cart-drawer.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
 <div class="cart-drawer flex flex-col border-box">
-  {% if cart.empty? %}
-    <div class="flex justify-between">
-      <h3>Cart is empty</h3>
-      <span id="close-drawer">X</span>
-    </div>
-
-  {% else %}
   <div class="flex justify-between">
     <h3>Ready to go!</h3>
     <span id="close-drawer">X</span>
   </div>
-    {% form 'cart', cart, class: 'cart-drawer-form flex flex-col justify-center gap-16' %}
-      {% for item in cart.items %}
-        <div class="item">
-          <img height="100px" width="100px" src="{{ item.product.featured_image | image_url }}" alt="">
-          <p>{{ item.product.title }}</p>
-          <p>{{ item.product.price | money_with_currency }}</p>
-
-          <input class="general-input" name="updates[]" value="{{ item.quantity }}" type="number">
-          <a href="{{ item.url_to_remove }}">
-            <button class="w-b-btn short">Remove</button>
-        </a>
-
-          <button class="b-w-btn short" type="update">Update</button>
-        </div>
-      {% endfor %}
-      <button class="b-w-btn mb-16" id="checkout-bottom" name="checkout" type="submit">Checkout</button>
-
-    {% endform %}
-  {% endif %}
+  {% form 'cart', cart, class: 'cart-drawer-form flex flex-col gap-16' %}
+    <div class="cart-items"></div>
+    <button class="b-w-btn mb-16" id="checkout-bottom" name="checkout" type="submit">Checkout</button>
+  {% endform %}
 </div>
