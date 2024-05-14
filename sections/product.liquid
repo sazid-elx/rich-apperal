@@ -28,11 +28,16 @@
           name="id"
           value="{{ product.selected_or_first_available_variant.id }}"
         >
-        <select class="product-option" id="variant-select" class="px-8">
-          {% for variant in product.variants %}
-            <option value="{{ variant.id }}">{{ variant.title }}</option>
-          {% endfor %}
-        </select>
+          <select class="product-option" id="variant-select" class="px-8">
+            {% for variant in product.variants %}
+              <option value="{{ variant.id }}" {% if variant.inventory_quantity == 0 %}disabled{% endif %}>
+                {{ variant.title }} {% if variant.inventory_quantity == 0 %} (Out of Stock){% endif %}
+                <script>
+                  console.log('{{ variant | json }}')
+                </script>
+              </option>
+            {% endfor %}
+          </select>
 
         <button class="b-w-btn mt-16 wide" id="add-to-bag" type="submit">Add To Bag</button>
       {% endform %}
