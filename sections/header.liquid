@@ -1,13 +1,22 @@
 {{ 'header.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+
 <div class="header flex items-center justify-between">
   <a class="title" href="/"><span class="b">Rich</span>Apperal</a>
 
-
-  <div class="menu-items flex gap-24 items-center" >
+  <div class="menu-items flex gap-24 items-center">
     {% for block in section.blocks -%}
-      <a id='featured-collection-nav' href="{{ block.settings.collection-name.url }}">{{ block.settings['collection-name'].title }}</a>
+      <a id="featured-collection-nav" href="{{ block.settings.collection-name.url }}">{{ block.settings['collection-name'].title }}</a>
     {%- endfor %}
+    <div class="dropdown">
+      <button class="dropbtn">More</button>
+      <div class="dropdown-content">
+        <a href="/collections">All Collections</a>
+       
+        <a href="/blogs/news">Blogs</a>
+       
+      </div>
+    </div>
   </div>
 
   <div class="menu-items flex gap-16 items-center">
@@ -32,32 +41,27 @@
 
   <div class="mobile-menu">
     <svg xmlns="http://www.w3.org/2000/svg" style="height: 24px; width: 24px" viewBox="0 0 448 512">
-      <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+      <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32-14.3 32 32z"/>
     </svg>
   </div>
 </div>
 
 <script>
-    // $(document).ready(() => $('[href="/wishlist"]').html($('wishlist-link-floating wk-button')));
-    function waitForElem(waitFor, callback, minElements = 1, isVariable = false, timer = 10000, frequency = 25) {
-        let elements = isVariable ? window[waitFor] : document.querySelectorAll(waitFor);
-        if (timer <= 0) return;
-        (!isVariable && elements.length >= minElements) || (isVariable && typeof window[waitFor] !== "undefined") ? callback(elements) : setTimeout(() => waitForElem(waitFor, callback, minElements, isVariable, timer - frequency), frequency);
-      }
+  function waitForElem(waitFor, callback, minElements = 1, isVariable = false, timer = 10000, frequency = 25) {
+    let elements = isVariable ? window[waitFor] : document.querySelectorAll(waitFor);
+    if (timer <= 0) return;
+    (!isVariable && elements.length >= minElements) || (isVariable && typeof window[waitFor] !== "undefined") ? callback(elements) : setTimeout(() => waitForElem(waitFor, callback, minElements, isVariable, timer - frequency), frequency);
+  }
 
-
-
-      waitForElem('wishlist-link-floating wk-button', ([element]) => {
-        $('[href="/wishlist"]').html($('wishlist-link-floating wk-button'))
-      });
-  
-   // $(document).ready(() => console.log(document.querySelector('wishlist-link-floating')));
+  waitForElem('wishlist-link-floating wk-button', ([element]) => {
+    $('[href="/wishlist"]').html($('wishlist-link-floating wk-button'))
+  });
 </script>
 
 {% schema %}
 {
   "name": "Header",
-   "blocks": [
+  "blocks": [
     {
       "name": "Header Collection",
       "type": "collection",
@@ -71,8 +75,8 @@
     }
   ],
   "presets": [
-   {
-    "name": "Header Menu"
+    {
+      "name": "Header Menu"
     }
   ]
 }

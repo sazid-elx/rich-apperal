@@ -92,6 +92,7 @@
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+        console.log('Success: ', response);
         $('#open-cart').click();
       })
       .catch(error => {
