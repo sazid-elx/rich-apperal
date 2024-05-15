@@ -32,6 +32,11 @@
     {% endform %}
   {% endif %}
 </div>
+
+<script>
+  console.log("auth ", {{ article.metafields.author.verified }})
+</script>
+
 {% schema %}
 {
   "name": "article",

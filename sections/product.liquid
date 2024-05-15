@@ -28,16 +28,19 @@
           name="id"
           value="{{ product.selected_or_first_available_variant.id }}"
         >
-          <select class="product-option" id="variant-select" class="px-8">
-            {% for variant in product.variants %}
-              <option value="{{ variant.id }}" {% if variant.inventory_quantity == 0 %}disabled{% endif %}>
-                {{ variant.title }} {% if variant.inventory_quantity == 0 %} (Out of Stock){% endif %}
-                <script>
-                  console.log('{{ variant | json }}')
-                </script>
-              </option>
-            {% endfor %}
-          </select>
+        <select class="product-option" id="variant-select" class="px-8">
+          {% for variant in product.variants %}
+            <option
+              value="{{ variant.id }}"
+              {% if variant.inventory_quantity == 0 %}
+                disabled
+              {% endif %}
+            >
+              {{ variant.title }}
+              {% if variant.inventory_quantity == 0 %} (Out of Stock){% endif %}
+            </option>
+          {% endfor %}
+        </select>
 
         <button class="b-w-btn mt-16 wide" id="add-to-bag" type="submit">Add To Bag</button>
       {% endform %}
@@ -61,7 +64,53 @@
           <img src="{{ "arrow-down.svg" | asset_url }}" alt="arrow down" height="16" width="16">
         </li>
       </ul>
+
+      <div class="highlight mt-16 ">
+        {% if product.metafields.custom.highlight %}
+          <h4>Product Highlights</h4>
+
+          <div class="rich-text flex flex-col mt-16 gap-8">
+            <script>
+              let x = JSON.parse('{{ product.metafields.custom.highlight }}');
+
+              $('.rich-text').html(
+                x.children[0].children.map((item) => item.children.map((child) => `<li>${child.value}</li>`)).join(' ')
+              );
+            </script>
+          </div>
+        {% else %}
+          <p>No highlights available.</p>
+        {% endif %}
+      </div>
+
+
     </div>
+  </div>
+
+  <div class="flex flex-col pt-16 gap-8 mx-20">
+    {% assign metaValue = product.metafields.custom.product_manage.value %}
+
+    {% for metaobject in metaValue %}
+      {% if metaobject.referred_product %}
+        <h4>You may like!</h4>
+        <ul id="referred-products"></ul>
+
+        <script>
+          var referredProductGIDs = {{ metaobject.referred_product}};
+
+          function gidToHandle(gid) {
+            
+            return gid.split('/').pop();
+          }
+
+          referredProductGIDs.forEach(function(gid) {
+            var productHandle = gidToHandle(gid);
+            var productUrl = '/products/' + productHandle;
+            document.getElementById('referred-products').insertAdjacentHTML('beforeend', '<li>Product GID: ' + productHandle + '</li>');
+          });
+        </script>
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
 
@@ -85,7 +134,7 @@
 
     $('#add-to-fav').html($('#shopify-block-wishlist_king_wishlist_button_block_CjQtb4'));
 
-    function addToCart(f_data) {    
+    function addToCart(f_data) {
       fetch('/cart/add.json', {
         method: 'POST',
         headers: {
@@ -119,7 +168,6 @@
 
 
   });
-
 </script>
 
 {% schema %}
