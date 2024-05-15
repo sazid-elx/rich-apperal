@@ -1,1 +1,10 @@
-{"sections":{"new":{"type":"new","settings":{}}},"order":["new"]}
+{
+    "sections": {
+        "page": {
+            "type": "page"
+        }
+    },
+    "order": [
+        "page"
+    ]
+}

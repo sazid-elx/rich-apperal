@@ -79,3 +79,23 @@ select {
 .bg-white{
   background-color: #fff;
 }
+.col-product-card{
+    width: 280px;
+    position: relative;
+} 
+
+.col-product-card h4{
+
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.col-product-card .favourite{
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+}

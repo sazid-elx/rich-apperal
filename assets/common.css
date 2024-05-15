@@ -80,6 +80,10 @@ body {
   flex: 1;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .justify-center {
   justify-content: center;
 }
