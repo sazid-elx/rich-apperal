@@ -1,6 +1,174 @@
-<div class="pdp" id="pdp-{{ section.id }}">
-    <p>Product Page</p>
+{{ 'pdp.css' | asset_url | stylesheet_tag }}
+<div class="pdp mx-20 mb-16" id="pdp-{{ section.id }}">
+  <div class="flex gap-32">
+    <div class="pdp-gallery flex gap-16 flex-wrap">
+      {% for img in product.images %}
+        <img src="{{ img | image_url }}" height="auto" width="48%">
+      {% endfor %}
+    </div>
+    <div class="pdp-info mt-16 pt-16">
+      <div class="flex gap-8 muted-txt mb-16">
+        <a href="{{ shop.url }}">Home</a> /
+        <a href="{{ product.collections.first.url }}"> {{ product.collections.first.title }}</a>
+      </div>
+      <h2>{{ product.title }}</h2>
+      <h2>
+        {{ localization.country.currency.symbol -}}
+        {{- product.price }}
+      </h2>
+
+      <p class="secondary-txt mt-16 mb-16" id="desc-{{ section.id }}">
+        {{ product.description }}
+      </p>
+
+      {% form 'product', product %}
+        <input
+          id="product-id"
+          type="hidden"
+          name="id"
+          value="{{ product.selected_or_first_available_variant.id }}"
+        >
+        <select class="product-option" id="variant-select" class="px-8">
+          {% for variant in product.variants %}
+            <option
+              value="{{ variant.id }}"
+              {% if variant.inventory_quantity == 0 %}
+                disabled
+              {% endif %}
+            >
+              {{ variant.title }}
+              {% if variant.inventory_quantity == 0 %} (Out of Stock){% endif %}
+            </option>
+          {% endfor %}
+        </select>
+
+        <button class="b-w-btn mt-16 wide" id="add-to-bag" type="submit">Add To Bag</button>
+      {% endform %}
+
+      <div id="add-to-fav" class=" flex items-center justify-center gap-8">
+        <p class="muted-txt mt-16 txt-center"></p>
+        <img src="{{ 'heart.svg' | asset_url }}" class="mt-12" height="24" width="24" alt="Wishlist">
+      </div>
+
+      <ul class="mt-16">
+        <li class="info-list flex justify-between">
+          <span>Details</span>
+          <img src="{{ "arrow-down.svg" | asset_url }}" alt="arrow down" height="16" width="16">
+        </li>
+        <li class="info-list flex justify-between">
+          <span>Send As Gift</span>
+          <img src="{{ "arrow-down.svg" | asset_url }}" alt="arrow down" height="16" width="16">
+        </li>
+        <li class="info-list flex justify-between">
+          <span>Measurments</span>
+          <img src="{{ "arrow-down.svg" | asset_url }}" alt="arrow down" height="16" width="16">
+        </li>
+      </ul>
+
+      <div class="highlight mt-16 ">
+        {% if product.metafields.custom.highlight %}
+          <h4>Product Highlights</h4>
+
+          <div class="rich-text flex flex-col mt-16 gap-8">
+            <script>
+              let x = JSON.parse('{{ product.metafields.custom.highlight }}');
+
+              $('.rich-text').html(
+                x.children[0].children.map((item) => item.children.map((child) => `<li>${child.value}</li>`)).join(' ')
+              );
+            </script>
+          </div>
+        {% else %}
+          <p>No highlights available.</p>
+        {% endif %}
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="flex flex-col pt-16 gap-8 mx-20">
+    {% assign metaValue = product.metafields.custom.product_manage.value %}
+
+    {% for metaobject in metaValue %}
+      {% if metaobject.referred_product %}
+        <h4>You may like!</h4>
+        <ul id="referred-products"></ul>
+
+        <script>
+          var referredProductGIDs = {{ metaobject.referred_product}};
+
+          function gidToHandle(gid) {
+            
+            return gid.split('/').pop();
+          }
+
+          referredProductGIDs.forEach(function(gid) {
+            var productHandle = gidToHandle(gid);
+            var productUrl = '/products/' + productHandle;
+            document.getElementById('referred-products').insertAdjacentHTML('beforeend', '<li>Product GID: ' + productHandle + '</li>');
+          });
+        </script>
+      {% endif %}
+    {% endfor %}
+  </div>
 </div>
+
+<script>
+  let product = {{ product | json }};
+
+  let select = document.querySelector('select');
+  let selectedVariantId = {{ product.selected_or_first_available_variant.id | json}};
+  select.addEventListener('change', () => {
+    selectedVariantId = select.value;
+
+    var productInput = document.querySelector('#product-id');
+
+    if (productInput) {
+      productInput.value = selectedVariantId;
+    }
+  });
+
+
+  $(document).ready(() => {
+
+    $('#add-to-fav').html($('#shopify-block-wishlist_king_wishlist_button_block_CjQtb4'));
+
+    function addToCart(f_data) {
+      fetch('/cart/add.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(f_data),
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        console.log('Success: ', response);
+        $('#open-cart').click();
+      })
+      .catch(error => {
+        console.error('There was a problem with your fetch operation:', error);
+      });
+    }
+
+
+    $('#add-to-bag').click((e) => {
+      e.preventDefault();
+      let formData = {
+        'items': [{
+          'id': selectedVariantId,
+          'quantity': 1
+        }]
+      };
+      addToCart(formData);
+    });
+
+
+  });
+</script>
 
 {% schema %}
 {

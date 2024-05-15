@@ -1,0 +1,21 @@
+{{ 'blog.css' | asset_url | stylesheet_tag }}
+
+<div class="blog mx-20">
+  <h2>Latest Posts</h2>
+
+  <div class="flex gap-16 flex-wrap mt-16 mb-16">
+    {% for post in blog.articles %}
+      <a href="{{ post.url }}">
+        <div class="blog-post-card flex flex-col gap-8 justify-center txt-center">
+          <h3>{{ post.title }}</h3>
+          <p class="muted-txt">{{ post.published_at | date: '%B %d, %Y' }}</p>
+          <p >{{ post.content | truncate: 80 }}</p>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  console.log({{ blog.metafields }});
+</script>

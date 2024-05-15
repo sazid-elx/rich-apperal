@@ -1,0 +1,27 @@
+.cart-drawer {
+   height: 100vh;
+    width: 400px;
+    right: 0; 
+    top: 0;
+    background: white;
+    z-index: 10;
+    transform: translateX(100%); 
+    transition: transform 0.3s;
+    position: fixed;
+    padding: 20px;
+    box-shadow: 10px 0 30px -10px rgba(0, 0, 0, 0.1); 
+    overflow-y: auto;
+}
+
+.cart-drawer.opened {
+    transform: translateX(0); 
+}
+
+
+.cart-drawer-form{
+    height: 100%;
+}
+
+#checkout-bottom{
+    margin-top: auto;
+}

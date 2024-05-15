@@ -1,0 +1,9 @@
+.product-card-details {
+  width: 300px;
+  /* max-width: 360px; */
+}
+
+.product-card-details img:hover{
+  transition: 1s;
+  transform: scale(1.01);  
+}

@@ -1,0 +1,57 @@
+{{ 'article.css' | asset_url | stylesheet_tag }}
+<div class="article-section-{{ section.id }} mx-20 mt-16 flex flex-col gap-32">
+  <div class="article-body flex flex-col gap-16">
+    <h2>{{ article.title }}</h2>
+    <h4 class="muted-txt"> {{ article.published_at | date: '%B %d, %Y' }}</h4>
+    <p>{{ article.content }}</p>
+  </div>
+
+  {% if article.comments_enabled? %}
+    {% for comment in article.comments %}
+      <div>
+        <h3>{{ comment.name }}</h3>
+        <p>{{ comment.body }}</p>
+      </div>
+    {% endfor %}
+
+    {% for comment in article.comments %}
+      <div>
+
+        <h3>{{ comment.author }}</h3>
+        <p>{{ comment.content }}</p>
+      </div>
+    {% endfor %}
+    {% form 'new_comment', article %}
+      <div class="flex flex-col gap-8">
+        <h2>Leave a comment</h2>
+        <input class="general-input" type="text" name="comment[author]" placeholder="Your name">
+        <input class="general-input" type="text" name="comment[email]" placeholder="Your email">
+        <textarea class="general-input" name="comment[body]" placeholder="Your comment"></textarea>
+        <button class="b-w-btn short" type="submit">Submit</button>
+      </div>
+    {% endform %}
+  {% endif %}
+</div>
+
+<script>
+  console.log("auth ", {{ article.metafields.author.verified }})
+</script>
+
+{% schema %}
+{
+  "name": "article",
+  "settings": [
+    {
+      "type": "color",
+      "id": "color_id",
+      "label": "Body color",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "article"
+    }
+  ]
+}
+{% endschema %}

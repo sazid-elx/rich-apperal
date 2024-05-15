@@ -1,37 +1,32 @@
-<script src="/assets/hero_carousel.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js" async></script>
 {{ 'hero_carousel.css' | asset_url | stylesheet_tag }}
 <div class="hero-banner-carousel" id="swiper-{{ section.id }}">
   <div class="slide-contents flex flex-col gap-32">
     <h1 class="slide-title">{{ section.settings.section_title }}</h1>
-    <button class="b-w-btn small">Shop Now</button>
+    <a href="/collections/all">
+      <button class="b-w-btn small">Shop Now</button>
+    </a>
   </div>
 
-  <div class="swiper">
-    <div class="swiper-wrapper">
+  <swiper-container navigation="true">
+
       {% for block in section.blocks %}
         {% case block.type %}
           {% when 'slider' %}
-            <div class="swiper-slide">
+            <swiper-slide>
               <img
                 src="{{ block.settings.hero_banner_image | image_url }}"
-                height="600px"
+                height="750px"
                 width="100%"
+              
                 alt="{{ block.settings.hero_banner_image }}"
               >
-            </div>
+            </swiper-slide>
         {% endcase %}
       {% endfor %}
-    </div>
-    <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
 
-    <!-- If we need navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
 
-    <!-- If we need scrollbar -->
-    <div class="swiper-scrollbar"></div>
-  </div>
+  </swiper-container>
 </div>
 
 {% schema %}

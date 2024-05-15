@@ -1,0 +1,42 @@
+<div class="contact-us mx-20 mt-16">
+  <h1>Contact Us</h1>
+  <div class="contact-form">
+    {% form 'contact', class: " flex flex-col gap-16 mt-16 w-50" %}
+      {{ form.errors | default_errors }}
+
+      <div class="first-name flex flex-col gap-8">
+        <label for="first-name">First name</label>
+        <input class="general-input" type="text" name="contact[first_name]" id="first-name">
+      </div>
+
+      <div class="last-name flex flex-col gap-8">
+        <label for="last-name">Last name</label>
+        <input class="general-input" type="text" name="contact[last_name]" id="last-name">
+      </div>
+
+      <div class="phone flex flex-col gap-8">
+        <label for="phone">Phone</label>
+        <input class="general-input" type="tel" name="contact[phone]" id="phone">
+      </div>
+
+      <div class="email flex flex-col gap-8">
+        <label for="email">Email</label>
+        <input class="general-input" type="email" name="contact[email]" id="email">
+      </div>
+
+      <div class="order-number flex flex-col gap-8">
+        <label for="order-number">Order number</label>
+        <input class="general-input" type="text" name="contact[order_number]" id="order-number">
+      </div>
+
+      <div class="message flex flex-col gap-8">
+        <label for="message">Message</label>
+        <textarea class="general-input" name="contact[body]" id="message"></textarea>
+      </div>
+
+      <div class="submit short mx-auto">
+        <button class="b-w-btn " type="submit" value="Create"> Submit </button>
+      </div>
+    {% endform %}
+  </div>
+</div>

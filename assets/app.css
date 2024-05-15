@@ -1,33 +1,84 @@
 .top-nav {
-    background-color: #111;
-    color: #fff;
-    width: 100%;
-    height: 44px;
+  background-color: #111;
+  color: #fff;
+  width: 100%;
+  height: 44px;
 }
 
 .b-w-btn {
-    height: 50px;
-    padding: 0 8px;
-    background: #000;
-    color: #fff;
-    transition: 0.3s;
-    border: none;
+  height: 50px;
+  padding: 0 8px;
+  background: #000;
+  color: #fff;
+  transition: 0.3s;
+  border: none;
+}
+
+.b-w-btn.wide {
+  width: 100%;
 }
 
 .b-w-btn.small {
-    width: 120px;
+  width: 120px;
 }
 
 .b-w-btn.short {
-    height: 40px;
+  height: 40px;
 }
 
 .b-w-btn:hover {
-    background: #fff;
-    color: #000;
-    border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  border: 2px solid #000;
 }
 
+.w-b-btn {
+  height: 50px;
+  padding: 0 8px;
+  color: #000;
+  background: #fff;
+  transition: 0.3s;
+  border: 2px solid #000;
+}
+
+.w-b-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+.w-b-btn.short {
+  height: 40px;
+}
+
+
+.muted-txt {
+  color: #777777;
+}
+
+.secondary-txt {
+  color: #333333;
+}
+
+select {
+  border: 2px solid black;
+  height: 50px;
+  width: 100%;
+}
+
+.general-input{
+  border: 2px solid black;
+  height: 40px;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.bg-gray{
+  background-color: #efefef;
+}
+
+.bg-white{
+  background-color: #fff;
+}
 .col-product-card{
     width: 280px;
     position: relative;

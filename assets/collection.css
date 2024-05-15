@@ -1,0 +1,21 @@
+.plp-holder {
+  position: relative;
+}
+
+.sidebar {
+  width: 200px;
+  position: absolute;
+  background: white;
+  min-height: 100%;
+}
+
+.sidebar .filter-label{
+  font-size: 18px;
+  font-weight: 400;
+  padding-bottom: 20px;
+  cursor: pointer;
+}
+
+.plp-contents {
+  margin-left: 200px;
+}

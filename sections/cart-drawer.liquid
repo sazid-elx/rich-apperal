@@ -1,0 +1,12 @@
+{{ 'cart-drawer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+<div class="cart-drawer flex flex-col border-box">
+  <div class="flex justify-between">
+    <h3>Ready to go!</h3>
+    <span id="close-drawer">X</span>
+  </div>
+  {% form 'cart', cart, class: 'cart-drawer-form flex flex-col gap-16' %}
+    <div class="cart-items"></div>
+    <button class="b-w-btn mb-16" id="checkout-bottom" name="checkout" type="submit">Checkout</button>
+  {% endform %}
+</div>

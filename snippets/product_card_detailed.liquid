@@ -1,0 +1,22 @@
+{{ 'product_card_detailed.css' | asset_url | stylesheet_tag }}
+<div class="product-card-details mb-16" id="pdp-{{ product.id }}">
+  <a href="{{ product.url }}">
+   
+    <img src="{{ product.featured_image | image_url }}" height="420px" width="300px" alt="{{ product.title }}">
+    <div class="flex justify-between gap-16">
+      <p class="muted-txt">{{ product.title | truncate: 100 }}</p>
+      <p class="muted-txt">{{ product.price }}{{ localization.country.currency.symbol }}</p>
+    </div>
+    
+  </a>
+</div>
+
+<script>
+  
+  $('#pdp-{{ product.id }} img').mouseenter(function() {
+    $(this).attr('src', '{{ product.images[1] | image_url }}')
+  })
+  $('#pdp-{{ product.id }} img').mouseleave(function() {
+    $(this).attr('src', '{{ product.featured_image | image_url }}')
+  })
+</script>

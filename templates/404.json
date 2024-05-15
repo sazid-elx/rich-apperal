@@ -1,8 +1,1 @@
-{
-    "sections": {
-        "404": {
-            "type": "404"
-        }
-    },
-    "order": ["404"]
-}
+{"sections":{"404":{"type":"404","settings":{}}},"order":["404"]}

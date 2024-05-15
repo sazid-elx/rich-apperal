@@ -1,0 +1,28 @@
+.pdp-gallery {
+  width: 66%;
+}
+
+.pdp-info {
+  border-top: 1px solid #efefef;
+  width: 34%;
+}
+
+li.info-list {
+  border-top: 1px solid #e7e7e7;
+  padding: 12px;
+  list-style: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+li.info-list:last-child {
+  border-bottom: 1px solid #e7e7e7;
+}
+
+li.info-list:first-child {
+  margin-top: 32px;
+}
+
+li.info-list:hover {
+  background: #fff;
+}

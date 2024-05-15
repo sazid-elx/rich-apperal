@@ -6,7 +6,7 @@
         "slider_BpjidH": {
           "type": "slider",
           "settings": {
-            "hero_banner_image": "shopify:\/\/shop_images\/986a2b052ada03689c1c0a576fd00d94.jpg"
+            "hero_banner_image": "shopify:\/\/shop_images\/rack-of-womens-clothing.jpg"
           }
         },
         "slider_mQnPPf": {
@@ -41,12 +41,26 @@
       "settings": {
         "gap": 40
       }
+    },
+    "prod_collection_carousel_YL9RQE": {
+      "type": "prod_collection_carousel",
+      "settings": {
+        "collection": "vans"
+      }
+    },
+    "gap_XVqGhr": {
+      "type": "gap",
+      "settings": {
+        "gap": 40
+      }
     }
   },
   "order": [
     "hero_collection",
     "gap_PnBNKP",
     "prod_collection_carousel_HD9UXE",
-    "gap_phrYfW"
+    "gap_phrYfW",
+    "prod_collection_carousel_YL9RQE",
+    "gap_XVqGhr"
   ]
 }

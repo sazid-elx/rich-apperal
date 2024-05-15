@@ -20,11 +20,11 @@ body {
   padding: 8px;
 }
 
-.px-4{
+.px-4 {
   padding: 0 4px;
 }
 
-.px-8{
+.px-8 {
   padding: 0 8px;
 }
 
@@ -32,24 +32,16 @@ body {
   padding-top: 8px;
 }
 
-.pt-16{
+.pt-16 {
   padding-top: 16px;
 }
 
-.pb-8{
+.pb-8 {
   padding-bottom: 8px;
 }
 
-.pb-16{
+.pb-16 {
   padding-bottom: 16px;
-}
-
-.mb-8{
-  margin-bottom: 8px;
-}
-
-.mb-16{
-  margin-bottom: 16px;
 }
 
 .gap-4 {
@@ -112,10 +104,14 @@ body {
   align-items: center;
 }
 
-.mt-8{
+.mt-8 {
   margin-top: 8px;
 }
-.mt-16{
+
+.mt-12 {
+  margin-top: 12px;
+}
+.mt-16 {
   margin-top: 16px;
 }
 
@@ -123,13 +119,34 @@ body {
   margin: 0 auto;
 }
 
-.mx-20{
+.mx-20 {
   margin: 0 20px;
+}
+
+.mb-8 {
+  margin-bottom: 8px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
 }
 
 button {
   cursor: pointer;
 }
+
+.w-100{
+  width: 100%;
+}
+
+.w-50{
+  width: 50%;
+}
+
+.border-box{
+  box-sizing: border-box;
+}
+
 a {
   all: unset;
   cursor: pointer;
@@ -146,4 +163,8 @@ a {
 
 .txt-center {
   text-align: center;
+}
+
+.none {
+  display: none !important;
 }

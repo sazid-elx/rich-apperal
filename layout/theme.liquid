@@ -13,7 +13,11 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     >
-
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" async></script>
     {% comment %} local css inject {% endcomment %}
     {{ 'common.css' | asset_url | stylesheet_tag }}
@@ -24,6 +28,7 @@
     {% section 'header' %}
 
     <main role="main">
+      {%  section 'cart-drawer' %}
       {{ content_for_layout }}
     </main>
 
