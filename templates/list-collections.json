@@ -1,12 +1,27 @@
 {
   "sections": {
+    "prod_collection_carousel_TU99x3": {
+      "type": "prod_collection_carousel",
+      "settings": {
+        "collection": "adidas"
+      }
+    },
+    "gap_KicNJY": {
+      "type": "gap",
+      "settings": {
+        "gap": 16
+      }
+    },
     "collection": {
       "type": "all-collections",
       "settings": {
+        "featured-collection": ""
       }
     }
   },
   "order": [
+    "prod_collection_carousel_TU99x3",
+    "gap_KicNJY",
     "collection"
   ]
 }
