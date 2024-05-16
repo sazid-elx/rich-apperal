@@ -2,9 +2,12 @@
 <div class="article-section-{{ section.id }} mx-20 mt-16 flex flex-col gap-32">
   <div class="article-body flex flex-col gap-16">
     <h2>{{ article.title }}</h2>
+    <p class="article-content">{{ article.author }}</p>
     <h4 class="muted-txt"> {{ article.published_at | date: '%B %d, %Y' }}</h4>
-    <p>{{ article.content }}</p>
+    <p >{{ article.content }}</p>
+    
   </div>
+
 
   {% if article.comments_enabled? %}
     {% for comment in article.comments %}
@@ -34,7 +37,7 @@
 </div>
 
 <script>
-  console.log("auth ", {{ article.metafields.author.verified }})
+  {% comment %} console.log("auth ", {{ blog }}) {% endcomment %}
 </script>
 
 {% schema %}

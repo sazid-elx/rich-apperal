@@ -1,0 +1,49 @@
+<div class="all-collections mx-20">
+  <h1>All Collections!</h1>
+  <div class="flex gap-16 flex-wrap mt-16 mb-16">
+    {% for collectin in collections %}
+      <a class="flex-col" href="{{ collectin.url }}">
+        <img src="{{ collectin.featured_image | image_url }}" height="100px" width="100px" alt="">
+        <h2>{{ collectin.title }}</h2>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .all-collections a {
+    border: 1px solid #ddd;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 250px;
+    text-align: center;
+  }
+
+  .all-collections a:hover {
+    background: #fff;
+  }
+
+  .all-collections img {
+    border-radius: 50%;
+  }
+</style>
+
+{% schema %}
+{
+    "name": "All Collections PLP",
+    "settings": [
+        {
+            "label": "Featured Collection",
+            "id": "featured-collection",
+            "type": "collection"
+        }
+    ],
+    "presets": [
+        {
+            "name": "All Collections"
+        }
+    ]
+}
+{% endschema %}
