@@ -1,6 +1,6 @@
-<div class="special-prod flex">
+<div class="special-prod flex gap-16">
     <img src="{{ section.settings.product.featured_image | image_url }}" alt="{{ product.title }}" width="300px" height="300px">
-    <div class="info flex flex-col gap-8 justify-center">
+    <div class="info flex flex-col gap-8 pt-8 pb-8 justify-between">
         <h3>{{ section.settings.product.title }}</h3>
         <p>{{ section.settings.product.description }}</p>
         <a href="{{ product.url }}" class="btn">
