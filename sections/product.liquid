@@ -36,8 +36,8 @@
                 disabled
               {% endif %}
             >
-              {{ variant.title }}
-              {% if variant.inventory_quantity == 0 %} (Out of Stock){% endif %}
+              <div class="p-8">{{ variant.title }}
+              {% if variant.inventory_quantity == 0 %} (Out of Stock){% endif %}</div>
             </option>
           {% endfor %}
         </select>
@@ -129,6 +129,16 @@
     }
   });
 
+  const fetchRecommendedProducts =  () => {
+    fetch('/recommendations/products?product_id={{ product.id }}').then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    }).then(data => { 
+      console.log(data);
+    })
+  }
 
   $(document).ready(() => {
 
@@ -166,6 +176,7 @@
       addToCart(formData);
     });
 
+    fetchRecommendedProducts();
 
   });
 </script>
