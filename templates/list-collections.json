@@ -17,11 +17,18 @@
       "settings": {
         "featured-collection": ""
       }
+    },
+    "special_product_PkhVpx": {
+      "type": "special-product",
+      "settings": {
+        "product": "converse-chuck-taylor-all-star-lo"
+      }
     }
   },
   "order": [
     "prod_collection_carousel_TU99x3",
     "gap_KicNJY",
-    "collection"
+    "collection",
+    "special_product_PkhVpx"
   ]
 }
