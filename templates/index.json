@@ -53,6 +53,12 @@
       "settings": {
         "gap": 40
       }
+    },
+    "special_product_LzVGbL": {
+      "type": "special-product",
+      "settings": {
+        "product": "palladium-pallatech-hi-tx-chevron"
+      }
     }
   },
   "order": [
@@ -61,6 +67,7 @@
     "prod_collection_carousel_HD9UXE",
     "gap_phrYfW",
     "prod_collection_carousel_YL9RQE",
-    "gap_XVqGhr"
+    "gap_XVqGhr",
+    "special_product_LzVGbL"
   ]
 }

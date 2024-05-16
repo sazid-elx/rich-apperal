@@ -26,13 +26,25 @@
             "settings": {
               "collection-name": "puma"
             }
+          },
+          "collection_FAjfdb": {
+            "type": "collection",
+            "settings": {
+              "collection-name": ""
+            }
           }
         },
         "block_order": [
           "collection_KGDreC",
           "collection_BffnRc",
-          "collection_ePWQ4d"
+          "collection_ePWQ4d",
+          "collection_FAjfdb"
         ],
+        "settings": {
+        }
+      },
+      "cart-drawer": {
+        "type": "cart-drawer",
         "settings": {
         }
       }
