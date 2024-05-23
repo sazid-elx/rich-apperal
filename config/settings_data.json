@@ -41,7 +41,7 @@
           "collection_FAjfdb"
         ],
         "settings": {
-          "sticky_header": "yes"
+          "sticky_header": "no"
         }
       },
       "cart-drawer": {
