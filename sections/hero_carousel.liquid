@@ -1,8 +1,8 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js" async></script>
 {{ 'hero_carousel.css' | asset_url | stylesheet_tag }}
 <div class="hero-banner-carousel" id="swiper-{{ section.id }}">
-  <div class="slide-contents flex flex-col gap-32">
-    <h1 class="slide-title">{{ section.settings.section_title }}</h1>
+  <div class="slide-contents flex flex-col gap-8">
+    <h1 class="slide-title text-4xl font-bold">{{ section.settings.section_title }}</h1>
     <a href="/collections/all">
       <button class="b-w-btn small">Shop Now</button>
     </a>
@@ -18,6 +18,8 @@
                 src="{{ block.settings.hero_banner_image | image_url }}"
                 height="750px"
                 width="100%"
+                loading="lazy"
+                class="w-full h-[750px]"
               
                 alt="{{ block.settings.hero_banner_image }}"
               >

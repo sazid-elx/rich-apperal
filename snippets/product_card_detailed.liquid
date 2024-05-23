@@ -1,18 +1,46 @@
 {{ 'product_card_detailed.css' | asset_url | stylesheet_tag }}
-<div class="product-card-details mb-16" id="pdp-{{ product.id }}">
-  <a href="{{ product.url }}">
-   
-    <img src="{{ product.featured_image | image_url }}" style="object-fit: contain" height="auto" width="300px" alt="{{ product.title }}">
-    <div class="flex justify-between gap-16">
-      <p class="muted-txt">{{ product.title | truncate: 100 }}</p>
-      <p class="muted-txt">{{ product.price }}{{ localization.country.currency.symbol }}</p>
+<div class="product-card-details mb-2 relative group" id="pdp-{{ product.id }}">
+  <a href="{{ product.url }}" class="block">
+    <div class="relative">
+      <img
+        src="{{ product.featured_image | image_url }}"
+        height="300"
+        width="300"
+        class="object-contain w-full h-auto transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+        alt="{{ product.title }}"
+      >
+      <div
+        id="variant-{{ product.id }}"
+        class="absolute flex flex-wrap justify-center px-4 gap-1 bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-center py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out product-variants"
+      >
+        {% for variant in product.variants %}
+          {%  if variant.available %}
+          <div class="rounded-full bg-white text-black min-w-[40px] p-1 min-h-[24px] flex justify-center items-center font-bold ">
+            {{ variant.option1 }}
+          </div>
+          {% else %}
+          <div disbaled class="rounded-full bg-white opacity-40 text-black min-w-[40px] p-1 min-h-[24px] flex justify-center items-center font-bold cursor-not-allowed  variant-unavailable">
+            {{ variant.option1 }}
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
-    
+    <div class="flex justify-between mt-2 ">
+      <p class="muted-txt truncate">{{ product.title | truncate: 100 }}</p>
+      <p class="muted-txt">
+        {{ product.price | money -}}
+      </p>
+    </div>
   </a>
 </div>
 
 <script>
   
+  $('.product-card-details [disbaled]').click(function(e) {
+    e.preventDefault();
+  })
+
   $('#pdp-{{ product.id }} img').mouseenter(function() {
     $(this).attr('src', '{{ product.images[1] | image_url }}')
   })

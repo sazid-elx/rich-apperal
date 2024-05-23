@@ -1,17 +1,17 @@
 {{ 'pdp.css' | asset_url | stylesheet_tag }}
-<div class="pdp mx-20 mb-16" id="pdp-{{ section.id }}">
-  <div class="flex gap-32">
-    <div class="pdp-gallery flex gap-16 flex-wrap">
+<div class="pdp mx-4 mb-16" id="pdp-{{ section.id }}">
+  <div class="flex gap-8">
+    <div class="pdp-gallery flex gap-4 flex-wrap">
       {% for img in product.images %}
         <img src="{{ img | image_url }}" height="auto" width="48%">
       {% endfor %}
     </div>
-    <div class="pdp-info mt-16 pt-16">
-      <div class="flex gap-8 muted-txt mb-16">
+    <div class="pdp-info mt-8 pt-4">
+      <div class="flex gap-2 muted-txt mb-8">
         <a href="{{ shop.url }}">Home</a> /
         <a href="{{ product.collections.first.url }}"> {{ product.collections.first.title }}</a>
       </div>
-      <h2>{{ product.title }}</h2>
+      <h2 class="text-3xl">{{ product.title }}</h2>
       <h2>
         {{ localization.country.currency.symbol -}}
         {{- product.price }}
@@ -42,7 +42,7 @@
           {% endfor %}
         </select>
 
-        <button class="b-w-btn mt-16 wide" id="add-to-bag" type="submit">Add To Bag</button>
+        <button class="b-w-btn mt-4 wide" id="add-to-bag" type="submit">Add To Bag</button>
       {% endform %}
 
       <div id="add-to-fav" class=" flex items-center justify-center gap-8">
@@ -50,7 +50,7 @@
         <img src="{{ 'heart.svg' | asset_url }}" class="mt-12" height="24" width="24" alt="Wishlist">
       </div>
 
-      <ul class="mt-16">
+      <ul class="mt-8">
         <li class="info-list flex justify-between">
           <span>Details</span>
           <img src="{{ "arrow-down.svg" | asset_url }}" alt="arrow down" height="16" width="16">
@@ -65,11 +65,11 @@
         </li>
       </ul>
 
-      <div class="highlight mt-16 ">
+      <div class="highlight mt-8 ">
         {% if product.metafields.custom.highlight %}
           <h4>Product Highlights</h4>
 
-          <div class="rich-text flex flex-col mt-16 gap-8">
+          <div class="rich-text flex flex-col mt-4 gap-2">
             <script>
               let x = JSON.parse('{{ product.metafields.custom.highlight }}');
 
@@ -87,7 +87,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col pt-16 gap-8 mx-20">
+  <div class="flex flex-col pt-16 gap-4 mx-4">
     {% assign metaValue = product.metafields.custom.product_manage.value %}
 
     {% for metaobject in metaValue %}
@@ -112,6 +112,10 @@
       {% endif %}
     {% endfor %}
   </div>
+
+  <div class="flex gap-2">
+    <p>{{ recommendations.products_count }}</p>
+  </div>
 </div>
 
 <script>
@@ -128,17 +132,6 @@
       productInput.value = selectedVariantId;
     }
   });
-
-  const fetchRecommendedProducts =  () => {
-    fetch('/recommendations/products?product_id={{ product.id }}').then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    }).then(data => { 
-      console.log(data);
-    })
-  }
 
   $(document).ready(() => {
 
@@ -175,9 +168,6 @@
       };
       addToCart(formData);
     });
-
-    fetchRecommendedProducts();
-
   });
 </script>
 

@@ -1,25 +1,35 @@
 {{ 'header.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
 
-<div class="header flex items-center justify-between">
+<div
+  class="
+    header flex items-center justify-between
+    {% if section.settings.sticky_header == 'yes' %}
+      header-sticky
+    {% endif %}
+  "
+>
   <a class="title" href="/"><span class="b">Rich</span>Apperal</a>
 
-  <div class="menu-items flex gap-24 items-center">
+  <div class="menu-items flex gap-8 items-center">
     {% for block in section.blocks -%}
-      <a id="featured-collection-nav" href="{{ block.settings.collection-name.url }}">{{ block.settings['collection-name'].title }}</a>
+      {% if block.settings['collection-name'].title %}
+        <a id="featured-collection-nav" href="{{ block.settings.collection-name.url }}">
+          {{- block.settings['collection-name'].title -}}
+        </a>
+      {% endif %}
     {%- endfor %}
+
     <div class="dropdown">
-      <button class="dropbtn">More</button>
+      <a id="featured-collection-nav" class="dropdown">More</a>
       <div class="dropdown-content">
         <a href="/collections">All Collections</a>
-       
         <a href="/blogs/news">Blogs</a>
-       
       </div>
     </div>
   </div>
 
-  <div class="menu-items flex gap-16 items-center">
+  <div class="menu-items flex gap-4 items-center">
     {{ localization.country | image_url: width: 32 | image_tag }}
     <a href="/search">
       <img src="{{ 'search.svg' | asset_url }}" height="24" width="24" alt="Search">
@@ -33,7 +43,7 @@
     <a href="/account">
       <img src="{{ 'user.svg' | asset_url }}" height="24" width="24" alt="Account">
     </a>
-    <div id="open-cart" class="flex items-center gap-8">
+    <div id="open-cart" class="flex items-center gap-1">
       <img src="{{ 'cart.svg' | asset_url }}" height="24" width="24" alt="Cart">
       <span class="cart-count">{{ cart.item_count }}</span>
     </div>
@@ -50,17 +60,68 @@
   function waitForElem(waitFor, callback, minElements = 1, isVariable = false, timer = 10000, frequency = 25) {
     let elements = isVariable ? window[waitFor] : document.querySelectorAll(waitFor);
     if (timer <= 0) return;
-    (!isVariable && elements.length >= minElements) || (isVariable && typeof window[waitFor] !== "undefined") ? callback(elements) : setTimeout(() => waitForElem(waitFor, callback, minElements, isVariable, timer - frequency), frequency);
+    (!isVariable && elements.length >= minElements) || (isVariable && typeof window[waitFor] !== 'undefined')
+      ? callback(elements)
+      : setTimeout(() => waitForElem(waitFor, callback, minElements, isVariable, timer - frequency), frequency);
   }
 
   waitForElem('wishlist-link-floating wk-button', ([element]) => {
-    $('[href="/wishlist"]').html($('wishlist-link-floating wk-button'))
+    $('[href="/wishlist"]').html($('wishlist-link-floating wk-button'));
+  });
+
+  $(document).ready(function () {
+    var headerHeight = $('.header-sticky')?.outerHeight();
+    $('body').css('padding-top', headerHeight + 40 + 'px');
+    if ($('.header-sticky').length) {
+      $('.top-nav').css({
+        position: 'fixed',
+        top: '0px',
+      });
+    }
+
+    $(window).on('scroll', function () {
+      var header = $('.header-sticky');
+      if ($(this).scrollTop() > 20) {
+        header.css('top', '0');
+      } else {
+        header.css('top', '40px');
+      }
+    });
   });
 </script>
+
+<style>
+  .header-sticky {
+    position: fixed;
+    top: 40px;
+    width: 100%;
+    z-index: 1000;
+    background: white;
+    transition: top 0.3s;
+  }
+</style>
 
 {% schema %}
 {
   "name": "Header",
+  "settings": [
+    {
+      "type": "radio",
+      "id": "sticky_header",
+      "label": "Sticky Header",
+      "default": "no",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    }
+  ],
   "blocks": [
     {
       "name": "Header Collection",

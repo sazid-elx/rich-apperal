@@ -1,15 +1,15 @@
 {% paginate collection.products by 10 %}
   {{ 'collection.css' | asset_url | stylesheet_tag }}
-  <div class="collection-plp mx-20">
-    <div class="flex flex-col jusify-center items-center gap-16 pt-16">
-      <h2>{{ collection.title }}</h2>
+  <div class="collection-plp mx-4">
+    <div class="flex flex-col jusify-center items-center gap-4 pt-4">
+      <h2 class="text-3xl">{{ collection.title }}</h2>
       <p class="muted-txt  mb-16">
         {{ collection.description }}
       </p>
     </div>
 
-    <div class="plp-holder">
-      <div class="sidebar flex flex-col items-start gap-16 p-8 mb-16 border-box" >
+    <div class="plp-holder gap-2">
+      <div class="sidebar flex flex-col items-start gap-4 p-4 mb-16 border-box" >
         <select id="sort-by">
           {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
 
@@ -112,7 +112,7 @@
                       <input type="submit" value="Apply">
                     </div>
                   {%- when 'list' -%}
-                    <ul class="flex flex-col gap-8 mx-20">
+                    <ul class="flex flex-col gap-2 mx-4">
                       {%- for filter_value in filter.values -%}
                         <li>
                           <label for="Filter-{{ filter.param_name }}-{{ forloop.index }}">
@@ -239,7 +239,7 @@
               {%- else -%}
                 {%- for filter_value in filter.active_values -%}
                   <p>
-                    <a href="{{ filter_value.url_to_remove }}" class="flex gap-16"><span class="bg-gray p-8"> {{ filter_value.label }} X </span></a>
+                    <a href="{{ filter_value.url_to_remove }}" class="flex gap-2"><span class="bg-gray p-2"> {{ filter_value.label }} <span class="text-[8px]">X</span></span></a>
                   </p>
                 {%- endfor -%}
               {%- endif -%}
@@ -248,13 +248,13 @@
         </form>
       </div>
 
-      <div class="plp-contents px-8 flex flex-wrap justify-center gap-16 pt-8">
+      <div class="plp-contents flex flex-wrap justify-center gap-4">
         {% for product in collection.products %}
           {% render 'product_card_detailed', product: product %}
         {% endfor %}
       </div>
 
-      <div class="flex justify-center mt-16 mb-16">
+      <div class="flex justify-center mt-8 mb-8">
         {% if paginate.pages > 1 %}
           <div class="pagination">
             {% if paginate.previous %}

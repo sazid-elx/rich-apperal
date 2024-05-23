@@ -4,6 +4,7 @@ $('span#close-drawer').on('click', function () {
 
 $('#open-cart').on('click', function () {
 
+
     fetch('/cart.js')
         .then(response => response.json())
         .then(cart => {
@@ -12,7 +13,6 @@ $('#open-cart').on('click', function () {
                 detail: cart
             }));
 
-        console.log(cart);
         $('.cart-count').text(cart.item_count);
 
         const cartItemsHTML = cart.items.map(item => {

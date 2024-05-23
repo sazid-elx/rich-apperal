@@ -13,14 +13,16 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     >
+    
     {{ '//code.jquery.com/jquery-3.7.1.slim.min.js' | script_tag  }}
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" async></script>
     
     {% comment %} local css inject {% endcomment %}
     {{ 'common.css' | asset_url | stylesheet_tag }}
     {{ 'app.css' | asset_url | stylesheet_tag }}
+    {{ 'style.css' | asset_url | stylesheet_tag }}
   </head>
-  <body>
+  <body class="scroll-smooth">
     {% section 'top_nav' %}
     {% section 'header' %}
 
